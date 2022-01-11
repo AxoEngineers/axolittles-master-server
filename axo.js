@@ -33,6 +33,13 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
+/*const fs = require('fs');
+let references = fs.readFileSync('./game/StreamingAssets/aa/catalog.json', 'utf8');
+references = references.replace(new RegExp("http://localhost:3000", 'g'), "http://127.0.0.1");
+fs.writeFileSync('game/StreamingAssets/aa/catalog.json', references);
+console.log("Rewriting localhost references to catalog according to environment");
+*/
+
 router.use('/', express.static('game'));
 router.use('/WebGL', express.static('assetbundles'));
 router.use('/avatar', express.static('av-fetcher/images'));
