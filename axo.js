@@ -34,6 +34,7 @@ const app = express();
 const router = express.Router();
 
 router.use('/', express.static('game'));
+router.use('/WebGL', express.static('assetbundles'));
 router.use('/avatar', express.static('av-fetcher/images'));
 
 /// OUR OWN REST API (REPLACES MORALIS WOO!!)
