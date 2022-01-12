@@ -33,11 +33,11 @@ const express = require("express");
 const app = express();
 const router = express.Router();
 
-if (config.env != "prod") 
+if (config.env != "local") 
 {
 	const fs = require('fs');
 	let references = fs.readFileSync('./game/StreamingAssets/aa/catalog.json', 'utf8');
-	references = references.replace(new RegExp("http://localhost:3000", 'g'), "https://axoquarium.herokuapp.com/");
+	references = references.replace(new RegExp("http://localhost:3000", 'g'), "https://axoquarium.herokuapp.com");
 	fs.writeFileSync('game/StreamingAssets/aa/catalog.json', references);
 	console.log("Rewriting localhost references to catalog according to environment");
 }
