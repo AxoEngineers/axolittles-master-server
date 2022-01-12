@@ -2,7 +2,7 @@
 define([], function () {
 		
 	const manager = new LoginManager({
-		signMsg: "Login To Pixelverse"
+		signMsg: "Login To Axoquarium"
 	});
 	
 	return manager;
