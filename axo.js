@@ -106,7 +106,7 @@ function promptInput() {
 	
 	// SEALS
 	console.log("LOADING AXO NORMAL/STAKE CONTRACT ...")
-	handler = await cm.registerContractLedger("0xf36446105fF682999a442b003f2224BcB3D82067", 13171333, "0x1ca6e4643062e67ccd555fb4f64bee603340e0ea")
+	handler = await cm.registerContractLedger("0xf36446105fF682999a442b003f2224BcB3D82067", 13171333, "0xFa822d611e583A6fB879c03645dDfd1c8877252A")
 	await handler.fetch()
 	
 })();
