@@ -3,6 +3,24 @@ const config = require('./config')
 
 const ContractLedger = require('./contracts/contractledger');
 const StorefrontLedger = require('./contracts/storefrontledger');
+const axios = require('axios');
+
+async function getAxosOwned(address) {
+    try {
+	const response = await axios.get('https://axo-backend-pvj2l.ondigitalocean.app/axos?address=' + address);
+	let axos = response['data']['axosOwned'];
+	let axosWithAddress = []
+	for (var i = 0; i < axos.length; i++) { 
+		axosWithAddress.push(address.toUpperCase() + ':' + axos[i]);
+	}
+		//console.log(axosWithAddress);
+		return axosWithAddress;
+    } catch (error) {
+		console.error(error);
+		return []
+    }
+}
+
 
 class ContractManager
 {
@@ -22,18 +40,7 @@ class ContractManager
 	}
 		
 	async getAllOwnedNfts(address) {
-		let nftsOwned = [];
-		
-		for (const [contractAddr, contract] of Object.entries(this.contracts)) {
-			let localAddrs = []
-			let ownedNfts = await contract.getOwnedNfts(address)
-			ownedNfts.forEach(nft => {
-				localAddrs.push(typeof nft === 'string' && nft.startsWith("SF_") ? `${nft}` : `${contractAddr}:${nft}`)
-			})
-			nftsOwned = [...nftsOwned, ...localAddrs]
-		}
-
-		return nftsOwned;
+		return getAxosOwned(address);
 	}
 	
 	async getOwnedNfts(contractAddress, address) {

@@ -56,7 +56,7 @@ router.use('/avatar', express.static('av-fetcher/images'));
 })*/
 
 router.get("/all/:addr", async(req, res, next) => {
-	res.send(await cm.getAllOwnedNfts(req.params.addr))
+	res.send(await cm.getAllOwnedNfts(req.params.addr));
 })
 
 /*router.get("/staked/:contract/:addr", async(req, res, next) => {
