@@ -7,20 +7,19 @@ const axios = require('axios');
 
 async function getAxosOwned(address) {
     try {
-      
-      const response = await axios.get('https://axo-backend-pvj2l.ondigitalocean.app/axos?address=' + address);
-      let axos = response['data']['axosOwned'];
-      let axosWithAddress = []
-      for (var i = 0; i < axos.length; i++) { 
-          axosWithAddress.push(address.toUpperCase() + ':' + axos[i]);
-        }
-      //console.log(axosWithAddress);
-      return axosWithAddress;
+	const response = await axios.get('https://axo-backend-pvj2l.ondigitalocean.app/axos?address=' + address);
+	let axos = response['data']['axosOwned'];
+	let axosWithAddress = []
+	for (var i = 0; i < axos.length; i++) { 
+		axosWithAddress.push(address.toUpperCase() + ':' + axos[i]);
+	}
+		//console.log(axosWithAddress);
+		return axosWithAddress;
     } catch (error) {
-      console.error(error);
-      return []
+		console.error(error);
+		return []
     }
-  }
+}
 
 
 class ContractManager
